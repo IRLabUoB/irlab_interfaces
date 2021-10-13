@@ -6,14 +6,6 @@ import copy
 import rospy
 import numpy as np
 import quaternion
-from aml_perception.msg import FTMessage
-from aml_perception import ft_sensor
-from aml_robot.robot_kinematics_interface import RobotKinematicsInterface
-from aml_math.quaternion_utils import compute_omg  # for computing orientation error
-from aml_robot.robot_interface import RobotInterface
-import aml_core.aml_exceptions as amlEx
-from aml_io.log_utils import aml_logging
-from aml_perception.utilities import get_ip
 from geometry_msgs.msg import WrenchStamped
 
 log_once = True
@@ -45,7 +37,7 @@ class FrankaRobot(PandaArm, RobotInterface):
 
         self._ft_smooth = {}
 
-        self._ft_smoother = rospy.Subscriber('/aml/ft_smoother/ft_val', FTMessage, self._ft_smooth_callback, queue_size=1, tcp_nodelay=True)
+        # self._ft_smoother = rospy.Subscriber('/aml/ft_smoother/ft_val', FTMessage, self._ft_smooth_callback, queue_size=1, tcp_nodelay=True)
 
         PandaArm._configure(self, on_state_callback)
 

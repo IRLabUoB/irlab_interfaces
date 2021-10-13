@@ -10,3 +10,5 @@ cd .. && rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 
 source /opt/ros/$ROS_DISTRO/setup.bash
 catkin build
+
+cp src/irlab_interfaces/package_scripts/franka.sh ./

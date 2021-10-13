@@ -36,3 +36,7 @@ If you already have a ROS Melodic environment:
     catkin build # if catkin not found, install catkin tools (apt install python-catkin-tools)
     source devel/setup.bash
 ```
+
+## Important Notes on Robot and Software Versions
+
+IRLab Interfaces is written for specific versions of the robot firmware and driver software.
