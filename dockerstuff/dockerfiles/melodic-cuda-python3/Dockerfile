@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:18.04
 
 # setup timezone
 RUN echo 'Etc/UTC' > /etc/timezone && \
@@ -6,6 +6,7 @@ RUN echo 'Etc/UTC' > /etc/timezone && \
     apt-get update && apt-get install -q -y tzdata && rm -rf /var/lib/apt/lists/*
 
 #RUN apt-get update && apt-get -y upgrade
+SHELL ["/bin/bash", "-c"]
 
 # install packages
 RUN apt-get update && apt-get install -y --no-install-recommends \

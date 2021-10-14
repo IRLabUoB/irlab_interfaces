@@ -174,7 +174,7 @@ RUN pip install --upgrade pip && \
     pip install pandas
 
 #six PySide
-RUN pip install numpy numpy-quaternion pygame decorator ipython jupyter matplotlib Pillow scipy scikit-learn 
+RUN pip install numpy numpy-quaternion==2020.5.19.15.27.24 pygame decorator ipython jupyter matplotlib Pillow scipy scikit-learn 
     # https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.4.1-cp27-none-linux_x86_64.whl
 # TENSOR FLOW *GPU*
 

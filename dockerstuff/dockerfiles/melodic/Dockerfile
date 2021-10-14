@@ -7,6 +7,8 @@ ENV DEBIAN_FRONTEND noninteractive
 #ENV http_proxy=$http_proxy
 #ENV https_proxy=$https_proxy
 
+SHELL ["/bin/bash", "-c"]
+
 # setup keys
 RUN curl -sSL \
 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' \
@@ -49,7 +51,7 @@ RUN pip install --upgrade pip && \
 
 
 #six PySide
-RUN pip install numpy numpy-quaternion pygame decorator ipython jupyter matplotlib Pillow scipy scikit-learn && \
+RUN pip install numpy numpy-quaternion==2020.5.19.15.27.24 pygame decorator ipython jupyter matplotlib Pillow scipy scikit-learn && \
     pip install --upgrade tensorflow
 # TENSOR FLOW *GPU*
 
