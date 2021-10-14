@@ -7,6 +7,11 @@ ENV DEBIAN_FRONTEND noninteractive
 #ENV http_proxy=$http_proxy
 #ENV https_proxy=$https_proxy
 
+# setup keys
+RUN curl -sSL \
+'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' \
+| apt-key add -
+
 # install packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
     dirmngr \
@@ -18,12 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN apt-get update && apt-get install -y \
     avahi-daemon avahi-utils
 
-RUN curl -sSL \
-'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' \
-| apt-key add -
-
 # Dependencies for baxter, sawyer and franka
-
 RUN apt-get update && \ 
     apt-get -y install sudo nano python-pip python-scipy libprotobuf-dev protobuf-compiler libboost-all-dev \
                        ros-melodic-convex-decomposition ros-melodic-ivcon \
@@ -43,7 +43,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
  #ros-melodic-sns-ik-lib \
 
-RUN pip install --upgrade pip &&\
+RUN pip install --upgrade pip && \
     pip install protobuf && \
     pip install pandas 
 
