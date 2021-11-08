@@ -7,6 +7,7 @@ import rospy
 import numpy as np
 import quaternion
 from geometry_msgs.msg import WrenchStamped
+from irlab_interfaces.robot_interface import RobotInterface
 
 log_once = True
 

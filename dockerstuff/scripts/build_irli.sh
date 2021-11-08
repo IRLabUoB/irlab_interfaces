@@ -5,8 +5,8 @@ WORK_DIR="${HOME}/Projects/"
 
 if [ -z "$DOCKER_IMAGE" ]
 then
-      echo "usage: ./bash.sh <docker-image-tag>"
-      echo "example: ./bash.sh dev:melodic-cuda"
+      echo "usage: ./build_irli.sh <docker-image-tag>"
+      echo "example: ./build_irli.sh irli:melodic-cuda"
       echo "to list built docker images run: docker images"
       exit 1
 fi

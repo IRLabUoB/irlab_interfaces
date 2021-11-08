@@ -21,11 +21,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 
-#installs avahi for local network discovery (required for using the real robot)
+#installs avahi for local network discovery (required for using sawyer robot)
 RUN apt-get update && apt-get install -y \
     avahi-daemon avahi-utils
 
-# Dependencies for baxter, sawyer and franka
 RUN apt-get update && \ 
     apt-get -y install sudo nano python-pip python-scipy libprotobuf-dev protobuf-compiler libboost-all-dev \
                        ros-melodic-convex-decomposition ros-melodic-ivcon \

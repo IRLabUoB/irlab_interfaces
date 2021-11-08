@@ -103,6 +103,7 @@ RUN curl -sSL \
 | apt-key add -
 
 # setup sources.list
+RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
 RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list
 
 # install bootstrap tools
@@ -143,12 +144,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gnupg2 \
     && rm -rf /var/lib/apt/lists/*
 
-#installs avahi for local network discovery (required for using the real robot)
+#installs avahi for local network discovery (required for using the sawyer robot)
 RUN apt-get update && apt-get install -y \
     avahi-daemon avahi-utils
 
-
-# Dependencies for baxter, sawyer and franka
 
 RUN apt-get update && \ 
     apt-get -y install sudo nano python-pip python-scipy libprotobuf-dev protobuf-compiler libboost-all-dev \
@@ -194,6 +193,7 @@ ENV NVIDIA_DRIVER_CAPABILITIES \
     ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics
 
 RUN if [[ $HTTP_PROXY != '' ]]; then git config --global http.proxy $HTTP_PROXY; fi
+
 
 RUN apt-get update && apt-get -y install python-catkin-tools ros-melodic-ros-pytest \ 
     ros-melodic-joy-teleop libcppunit-dev ros-melodic-moveit-resources python-future \

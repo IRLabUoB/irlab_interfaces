@@ -24,5 +24,4 @@ fi
 #   HTTPS_PROXY=${https_proxy}
 # fi
 
-#cp -r avahi-configs ${DOCKER_FILE_PATH}
 docker build ${DOCKER_FILE_PATH} --network="host" -t irli:$1 
