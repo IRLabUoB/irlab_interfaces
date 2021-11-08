@@ -1,0 +1,7 @@
+<launch>
+
+
+    <node pkg="intera_interface" type="joint_trajectory_action_server.py" name="sawyer_trajectory_server" output="screen"></node>
+    <include file="$(find sawyer_moveit_config)/launch/move_group.launch"></include>
+
+</launch>
