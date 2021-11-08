@@ -14,6 +14,10 @@ RUN curl -sSL \
 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' \
 | apt-key add -
 
+# setup sources.list
+RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
+RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list
+
 # install packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
     dirmngr \
